@@ -9,3 +9,5 @@ it('Getting only relevant data', () => {
     expect(profile.following).toBe(0);
   });
 });
+
+// user with no stars
