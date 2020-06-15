@@ -38,7 +38,8 @@ const useStyles = makeStyles(theme => ({
 function ProfileInfo({ repositoriesCount, starsCount, followersCount, followingCount }) {
   const classes = useStyles();
 
-  return <Grid container direction='column'>
+  return (
+  <Grid container direction='column'>
     <Grid item container direction='row'>
       <Grid item className={classes.infoContainer}>
         <img alt='Repositories icon' src={RepositoriesIcon} className={classes.infoIcon} />
@@ -79,7 +80,8 @@ function ProfileInfo({ repositoriesCount, starsCount, followersCount, followingC
         </div>
       </Grid>
     </Grid>
-  </Grid>;
+  </Grid>
+  );
 }
 
 export default ProfileInfo;
