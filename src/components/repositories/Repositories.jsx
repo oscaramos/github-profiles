@@ -44,11 +44,11 @@ function Repositories({ repositories, focused }) {
 
   return (
     <div>
-      <Typography variant='h1'>Popular Repositories</Typography>
-      <Grid container direction='column' spacing={1} justifyContent='center'
+      <Typography variant='h1'>Repositories</Typography>
+      <Grid container direction='column' spacing={1} justify='center'
             className={classes.repositoriesInfoContainer}>
         {repositories.map((repository, index) =>
-          <Grid item>
+          <Grid item key={index}>
             <Grid container direction='row' alignItems='center' className={classes.repositoryContainer}>
               <Grid item xs={3} className={classes.repositoryIconContainer}>
                 <img alt='repository icon' src={RepositoriesLightIcon} className={classes.repositoryIcon} />

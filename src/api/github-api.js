@@ -38,6 +38,7 @@ export const getGithubProfile = (username) => {
       const repositories = values[3];
 
       return {...profile,
+        username: profile.login,
         avatarUrl: profile.avatar_url,
 
         repositoriesCount: profile.public_repos,

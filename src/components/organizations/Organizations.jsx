@@ -21,7 +21,7 @@ function Organizations({ organizations }) {
       <Grid container direction='row' spacing={1} className={classes.organizationUrls}>
         {
           organizations.map(org =>
-            <Grid item>
+            <Grid item key={org.avatarUrl}>
               <img className={classes.organizationImage} alt='organization' src={org.avatarUrl} />
             </Grid>
           )
