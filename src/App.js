@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 
 import Profile from './pages/Profile'
 import InputUsername from './pages/InputUsername'
+import SnackbarMessage from './components/snackbar-message/SnackbarMessage'
 
 import { getGithubProfile } from './api/github-api';
 
@@ -52,6 +53,7 @@ const defaultProfile = {
 function App() {
   const [route, setRoute] = useState('input-username');
   const [username, setUsername] = useState('');
+  const [open, setOpen] = useState(false);
 
   const [profile, setProfile] = useState(defaultProfile);
 
@@ -59,9 +61,17 @@ function App() {
     getGithubProfile(username)
       .then(profile => {
         setRoute('profile');
-        setProfile(profile)
+        setProfile(profile);
+      })
+      .catch(error => {
+        console.log(error);
+        setOpen(true);
       })
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  }
 
   return (
     <Container maxWidth='xs'>
@@ -70,11 +80,12 @@ function App() {
           <InputUsername setUsername={setUsername}
                          handleSearch={handleSearch} />
         :
-          <Profile profile={profile} />
+          <Profile open={open} profile={profile} />
       }
 
+      <SnackbarMessage message="The username is not valid"
+                       open={open} handleClose={handleClose}/>
     </Container>
-
   );
 }
 
