@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   infoContainer: {
     textAlign: 'center',
-    width: "5em"
+    width: "25%"
   },
   infoContainerBorder: {
     borderRight: '1.5px solid #DADADA'
@@ -39,45 +39,49 @@ function ProfileInfo({ repositoriesCount, starsCount, followersCount, followingC
   const classes = useStyles();
 
   return (
-  <Grid container direction='column'>
-    <Grid item container direction='row'>
-      <Grid item className={classes.infoContainer}>
-        <img alt='Repositories icon' src={RepositoriesIcon} className={classes.infoIcon} />
-      </Grid>
-      <Grid item className={classes.infoContainer}>
-        <img alt='Repositories icon' src={StarsIcon} className={classes.infoIcon} />
-      </Grid>
-      <Grid item className={classes.infoContainer}>
-        <img alt='Repositories icon' src={FollowersIcon} className={classes.infoIcon} />
-      </Grid>
-      <Grid item className={classes.infoContainer}>
-        <img alt='Repositories icon' src={FollowingIcon} className={classes.infoIcon} />
-      </Grid>
-    </Grid>
-    <Grid item container direction='row'>
-      <Grid item className={classes.infoContainer}>
-        <div className={classes.infoContainerBorder}>
+  <Grid container direction='row' justify='center'>
+    <Grid item className={classes.infoContainer}>
+      <Grid container direction='column'>
+        <Grid item>
+          <img alt='Repositories icon' src={RepositoriesIcon} className={classes.infoIcon} />
+        </Grid>
+        <Grid item className={classes.infoContainerBorder}>
           <div className={classes.infoNumber}>{repositoriesCount}</div>
           <div className={classes.infoLabel}>Repositories</div>
-        </div>
+        </Grid>
       </Grid>
-      <Grid item className={classes.infoContainer}>
-        <div className={classes.infoContainerBorder}>
+    </Grid>
+    <Grid item className={classes.infoContainer}>
+      <Grid container direction='column'>
+        <Grid item>
+          <img alt='Repositories icon' src={StarsIcon} className={classes.infoIcon} />
+        </Grid>
+        <Grid item className={classes.infoContainerBorder}>
           <div className={classes.infoNumber}>{starsCount}</div>
           <div className={classes.infoLabel}>Stars</div>
-        </div>
+        </Grid>
       </Grid>
-      <Grid item className={classes.infoContainer}>
-        <div className={classes.infoContainerBorder}>
+    </Grid>
+    <Grid item className={classes.infoContainer}>
+      <Grid container direction='column'>
+        <Grid item>
+          <img alt='Repositories icon' src={FollowersIcon} className={classes.infoIcon} />
+        </Grid>
+        <Grid item className={classes.infoContainerBorder}>
           <div className={classes.infoNumber}>{followersCount}</div>
           <div className={classes.infoLabel}>Followers</div>
-        </div>
+        </Grid>
       </Grid>
-      <Grid item className={classes.infoContainer}>
-        <div>
+    </Grid>
+    <Grid item className={classes.infoContainer}>
+      <Grid container direction='column'>
+        <Grid item>
+          <img alt='Repositories icon' src={FollowingIcon} className={classes.infoIcon} />
+        </Grid>
+        <Grid item>
           <div className={classes.infoNumber}>{followingCount}</div>
           <div className={classes.infoLabel}>Following</div>
-        </div>
+        </Grid>
       </Grid>
     </Grid>
   </Grid>

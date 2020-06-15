@@ -11,7 +11,6 @@ const useStyles = makeStyles(theme => ({
   },
   repositoryContainer: {
     height: '4em',
-    width: '18em',
     border: '1px solid #DADADA',
     borderRadius: '10px'
   },
@@ -46,7 +45,8 @@ function Repositories({ repositoriesInfo, focused }) {
   return (
     <div>
       <Typography variant='h1'>Popular Repositories</Typography>
-      <Grid container direction='column' spacing={1} className={classes.repositoriesInfoContainer}>
+      <Grid container direction='column' spacing={1} justifyContent='center'
+            className={classes.repositoriesInfoContainer}>
         {repositoriesInfo.map((repository, index) =>
           <Grid item>
             <Grid container direction='row' alignItems='center' className={classes.repositoryContainer}>

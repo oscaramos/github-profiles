@@ -4,9 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
-  organizationsContainer: {
-    width: '18em'
-  },
   organizationUrls: {
     marginTop: '0.4em'
   },
@@ -19,7 +16,7 @@ function Organizations({ orgImageUrls }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.organizationsContainer}>
+    <React.Fragment>
       <Typography variant='h1'>Organizations</Typography>
       <Grid container direction='row' spacing={1} className={classes.organizationUrls}>
         {
@@ -30,7 +27,7 @@ function Organizations({ orgImageUrls }) {
           )
         }
       </Grid>
-    </div>
+    </React.Fragment>
   )
 }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import Container from '@material-ui/core/Container';
-import AppBar from '@material-ui/core/AppBar';
+import Grid from '@material-ui/core/Grid';
 
 import ProfileInfo from './components/profile-info/ProfileInfo';
 import About from './components/about/About';
@@ -28,17 +28,10 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(3),
     margin: '0'
   },
-  spacingHead: {
-
-  },
-  about: {
-    marginTop: theme.spacing(4)
-  },
-  organizations: {
-    marginTop: theme.spacing(2)
-  },
-  repositories: {
-    marginTop: theme.spacing(2)
+  profileBody: {
+    marginBottom: theme.spacing(8),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
   }
 }))
 
@@ -88,21 +81,21 @@ function App() {
       <div className={classes.profileHead}>
         <ProfileHead profile={profile} />
       </div>
-      <div className={classes.spacingHead} />
-      <div className={classes.scrolleable}>
-        <div className={classes.profileinfo}>
+      <Grid container direction='column' justifyContent='center' spacing={3}
+            className={classes.profileBody}>
+        <Grid item>
           <ProfileInfo repositoriesCount={3} starsCount={123} followersCount={15} followingCount={60} />
-        </div>
-        <div className={classes.about}>
+        </Grid>
+        <Grid item>
           <About description={description} />
-        </div>
-        <div className={classes.organizations}>
+        </Grid>
+        <Grid item>
           <Organizations orgImageUrls={orgImageUrls} />
-        </div>
-        <div className={classes.repositories}>
+        </Grid>
+        <Grid item>
           <Repositories repositoriesInfo={repositoriesInfo} focused={0} />
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     </Container>
   );
 }
