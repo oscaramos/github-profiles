@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     color: '#1F1F1F',
     marginTop: '0.2em'
   },
-  profileUrl: {
+  profileBlogUrl: {
     fontSize: '14px',
     lineHeight: '20px',
     color: '#1F1F1F',
@@ -55,8 +55,8 @@ const ProfileHead = ({ profile }) => {
       <div className={classes.profileUsername}>
         {profile.username}
       </div>
-      <div className={classes.profileUrl}>
-        {profile.url}
+      <div className={classes.profileBlogUrl}>
+        {profile.blog}
       </div>
       <div className={classes.profileEmail}>
         {profile.email}

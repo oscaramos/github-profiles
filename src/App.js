@@ -60,7 +60,7 @@ function App() {
   const [profile, setProfile] = useState({
     name: 'Ashley Simpson',
     username: 'ashley',
-    url: 'www.ahsleydev.com',
+    blog: 'www.ahsleydev.com',
     avatarUrl: 'https://avatars1.githubusercontent.com/u/21105282?v=4',
     email: 'ashley@techcompany.com',
 
@@ -71,20 +71,28 @@ function App() {
 
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate distinctio eum ex illum, iste minima optio vel? Aliquam animi, culpa et id nam neque tempore ut? Doloremque dolores non saepe.',
 
-    orgImageUrls: ['https://avatars1.githubusercontent.com/u/35373879?v=4',
-      'https://avatars1.githubusercontent.com/u/35373879?v=4'],
-    repositoriesInfo: [
+    organizations: [
       {
-        title: 'Data manager',
+        avatarUrl: 'https://avatars1.githubusercontent.com/u/35373879?v=4'
+      }
+    ],
+
+    repositories: [
+      {
+        name: 'Data manager',
         description: 'Quick start for big data projects'
       },
       {
-        title: 'Data manager',
+        name: 'Data manager',
         description: 'Quick start for big data projects'
       },
       {
-        title: 'Data manager',
+        name: 'Data manager',
         description: 'Quick start for big data projects'
+      },
+      {
+        name: 'Analisis_Numerico',
+        description: 'Programa final del curso de analisis numerico.'
       }
     ],
   });
@@ -118,10 +126,10 @@ function App() {
             <About description={profile.description} />
           </Grid>
           <Grid item>
-            <Organizations orgImageUrls={profile.orgImageUrls} />
+            <Organizations organizations={profile.organizations} />
           </Grid>
           <Grid item>
-            <Repositories repositoriesInfo={profile.repositoriesInfo} focused={0} />
+            <Repositories repositories={profile.repositories} focused={0} />
           </Grid>
         </Grid>
       </ScrollArea>

@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function Repositories({ repositoriesInfo, focused }) {
+function Repositories({ repositories, focused }) {
   const classes = useStyles();
 
   return (
@@ -47,7 +47,7 @@ function Repositories({ repositoriesInfo, focused }) {
       <Typography variant='h1'>Popular Repositories</Typography>
       <Grid container direction='column' spacing={1} justifyContent='center'
             className={classes.repositoriesInfoContainer}>
-        {repositoriesInfo.map((repository, index) =>
+        {repositories.map((repository, index) =>
           <Grid item>
             <Grid container direction='row' alignItems='center' className={classes.repositoryContainer}>
               <Grid item xs={3} className={classes.repositoryIconContainer}>
@@ -57,7 +57,7 @@ function Repositories({ repositoriesInfo, focused }) {
                 <Grid container direction='column'>
                   <Grid item>
                     <div className={classes.repositoryTitle}>
-                      {repository.title}
+                      {repository.name}
                     </div>
                   </Grid>
                   <Grid item>

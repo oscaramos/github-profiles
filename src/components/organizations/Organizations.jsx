@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function Organizations({ orgImageUrls }) {
+function Organizations({ organizations }) {
   const classes = useStyles();
 
   return (
@@ -20,9 +20,9 @@ function Organizations({ orgImageUrls }) {
       <Typography variant='h1'>Organizations</Typography>
       <Grid container direction='row' spacing={1} className={classes.organizationUrls}>
         {
-          orgImageUrls.map(url =>
+          organizations.map(org =>
             <Grid item>
-              <img className={classes.organizationImage} alt='organization' src={url} />
+              <img className={classes.organizationImage} alt='organization' src={org.avatarUrl} />
             </Grid>
           )
         }
