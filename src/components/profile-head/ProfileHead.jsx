@@ -4,8 +4,8 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   profileHeadContainer: {
-    width: '18em',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0 auto'
   },
   avatar: {
     width: '8em',

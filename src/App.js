@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import Container from '@material-ui/core/Container';
+import AppBar from '@material-ui/core/AppBar';
 
 import ProfileInfo from './components/profile-info/ProfileInfo';
 import About from './components/about/About';
@@ -12,11 +13,23 @@ import ProfileHead from './components/profile-head/ProfileHead';
 // import { getGithubProfile } from './api/github-api';
 
 const useStyles = makeStyles(theme => ({
-  profile: {
-    paddingTop: theme.spacing(4)
+  '@global': {
+    body: {
+      margin: 0,
+      padding: 0,
+    }
   },
-  scrolleable: {
-    marginTop: theme.spacing(4)
+  profileHead: {
+    backgroundColor: 'white',
+    position: 'sticky',
+    top: 0,
+    width: '100%',
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(3),
+    margin: '0'
+  },
+  spacingHead: {
+
   },
   about: {
     marginTop: theme.spacing(4)
@@ -72,9 +85,10 @@ function App() {
 
   return (
     <Container maxWidth='xs'>
-      <div className={classes.profile}>
+      <div className={classes.profileHead}>
         <ProfileHead profile={profile} />
       </div>
+      <div className={classes.spacingHead} />
       <div className={classes.scrolleable}>
         <div className={classes.profileinfo}>
           <ProfileInfo repositoriesCount={3} starsCount={123} followersCount={15} followingCount={60} />
