@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
+import ScrollBooster from "scrollbooster";
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -26,12 +27,19 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(3),
-    margin: '0'
+    margin: '0',
+    zIndex: 1
   },
   profileBody: {
     marginBottom: theme.spacing(8),
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
+  },
+  viewport: {
+    width: '100%',
+    height: '20em',
+    overflow: 'hidden',
+    cursor: 'grabbing'
   }
 }))
 
@@ -44,12 +52,18 @@ function App() {
 
   // const [profile, setProfile] = useState({});
 
-  // useEffect(() => {
-  //   getGithubProfile('oscaramos')
-  //     .then(profile => {
-  //       setProfile(profile)
-  //     })
-  // }, [])
+  useEffect(() => {
+    new ScrollBooster({
+      viewport: document.querySelector("#viewport"),
+      content: document.querySelector("#content"),
+      direction: "vertical",
+      scrollMode: "transform"
+    });
+    // getGithubProfile('oscaramos')
+    //   .then(profile => {
+    //     setProfile(profile)
+    //   })
+  }, [])
 
   const orgImageUrls = ['https://avatars1.githubusercontent.com/u/35373879?v=4',
     'https://avatars1.githubusercontent.com/u/35373879?v=4']
@@ -82,21 +96,25 @@ function App() {
       <div className={classes.profileHead}>
         <ProfileHead profile={profile} />
       </div>
-      <Grid container direction='column' justifyContent='center' spacing={3}
-            className={classes.profileBody}>
-        <Grid item>
-          <ProfileInfo repositoriesCount={3} starsCount={123} followersCount={15} followingCount={60} />
-        </Grid>
-        <Grid item>
-          <About description={description} />
-        </Grid>
-        <Grid item>
-          <Organizations orgImageUrls={orgImageUrls} />
-        </Grid>
-        <Grid item>
-          <Repositories repositoriesInfo={repositoriesInfo} focused={0} />
-        </Grid>
-      </Grid>
+      <div className={classes.viewport} id='viewport'>
+        <div id='content'>
+          <Grid container direction='column' justifyContent='center' spacing={3}
+                className={classes.profileBody}>
+            <Grid item>
+              <ProfileInfo repositoriesCount={3} starsCount={123} followersCount={15} followingCount={60} />
+            </Grid>
+            <Grid item>
+              <About description={description} />
+            </Grid>
+            <Grid item>
+              <Organizations orgImageUrls={orgImageUrls} />
+            </Grid>
+            <Grid item>
+              <Repositories repositoriesInfo={repositoriesInfo} focused={0} />
+            </Grid>
+          </Grid>
+        </div>
+      </div>
     </Container>
   );
 }
