@@ -6,6 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import RepositoriesLightIcon from '../../assets/icons/RepositoriesLight.svg';
 
 const useStyles = makeStyles(theme => ({
+  repositoriesInfoContainer: {
+    marginTop: '0.4em'
+  },
   repositoryContainer: {
     height: '4em',
     width: '18em',
@@ -43,7 +46,7 @@ function Repositories({ repositoriesInfo, focused }) {
   return (
     <div>
       <Typography variant='h1'>Popular Repositories</Typography>
-      <Grid container direction='column' spacing={1}>
+      <Grid container direction='column' spacing={1} className={classes.repositoriesInfoContainer}>
         {repositoriesInfo.map((repository, index) =>
           <Grid item>
             <Grid container direction='row' alignItems='center' className={classes.repositoryContainer}>

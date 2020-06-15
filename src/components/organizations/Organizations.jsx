@@ -7,6 +7,9 @@ const useStyles = makeStyles(theme => ({
   organizationsContainer: {
     width: '18em'
   },
+  organizationUrls: {
+    marginTop: '0.4em'
+  },
   organizationImage: {
     width: '3em'
   }
@@ -18,7 +21,7 @@ function Organizations({ orgImageUrls }) {
   return (
     <div className={classes.organizationsContainer}>
       <Typography variant='h1'>Organizations</Typography>
-      <Grid container direction='row' spacing={1}>
+      <Grid container direction='row' spacing={1} className={classes.organizationUrls}>
         {
           orgImageUrls.map(url =>
             <Grid item>
