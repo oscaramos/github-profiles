@@ -45,12 +45,49 @@ const useStyles = makeStyles(theme => ({
 
 // Remember 50 api calls per hour
 
+const ScrollArea = ({ viewportClass, children }) =>
+  <div className={viewportClass} id='viewport'>
+    <div id='content'>
+      { children }
+    </div>
+  </div>
+
+
 function App() {
   const classes = useStyles();
 
-  const description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate distinctio eum ex illum, iste minima optio vel? Aliquam animi, culpa et id nam neque tempore ut? Doloremque dolores non saepe.'
 
-  // const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState({
+    name: 'Ashley Simpson',
+    username: 'ashley',
+    url: 'www.ahsleydev.com',
+    avatarUrl: 'https://avatars1.githubusercontent.com/u/21105282?v=4',
+    email: 'ashley@techcompany.com',
+
+    repositoriesCount: 3,
+    starsCount: 128,
+    followersCount: 15,
+    followingCount: 60,
+
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate distinctio eum ex illum, iste minima optio vel? Aliquam animi, culpa et id nam neque tempore ut? Doloremque dolores non saepe.',
+
+    orgImageUrls: ['https://avatars1.githubusercontent.com/u/35373879?v=4',
+      'https://avatars1.githubusercontent.com/u/35373879?v=4'],
+    repositoriesInfo: [
+      {
+        title: 'Data manager',
+        description: 'Quick start for big data projects'
+      },
+      {
+        title: 'Data manager',
+        description: 'Quick start for big data projects'
+      },
+      {
+        title: 'Data manager',
+        description: 'Quick start for big data projects'
+      }
+    ],
+  });
 
   useEffect(() => {
     new ScrollBooster({
@@ -65,56 +102,29 @@ function App() {
     //   })
   }, [])
 
-  const orgImageUrls = ['https://avatars1.githubusercontent.com/u/35373879?v=4',
-    'https://avatars1.githubusercontent.com/u/35373879?v=4']
-
-  const repositoriesInfo = [
-    {
-      title: 'Data manager',
-      description: 'Quick start for big data projects'
-    },
-    {
-      title: 'Data manager',
-      description: 'Quick start for big data projects'
-    },
-    {
-      title: 'Data manager',
-      description: 'Quick start for big data projects'
-    }
-  ]
-
-  const profile = {
-    name: 'Ashley Simpson',
-    username: 'ashley',
-    url: 'www.ahsleydev.com',
-    avatarUrl: 'https://avatars1.githubusercontent.com/u/21105282?v=4',
-    email: 'ashley@techcompany.com',
-  }
-
   return (
     <Container maxWidth='xs'>
       <div className={classes.profileHead}>
         <ProfileHead profile={profile} />
       </div>
-      <div className={classes.viewport} id='viewport'>
-        <div id='content'>
-          <Grid container direction='column' justifyContent='center' spacing={3}
-                className={classes.profileBody}>
-            <Grid item>
-              <ProfileInfo repositoriesCount={3} starsCount={123} followersCount={15} followingCount={60} />
-            </Grid>
-            <Grid item>
-              <About description={description} />
-            </Grid>
-            <Grid item>
-              <Organizations orgImageUrls={orgImageUrls} />
-            </Grid>
-            <Grid item>
-              <Repositories repositoriesInfo={repositoriesInfo} focused={0} />
-            </Grid>
+      <ScrollArea viewportClass={classes.viewport}>
+        <Grid container direction='column' justifyContent='center' spacing={3}
+              className={classes.profileBody}>
+          <Grid item>
+            <ProfileInfo repositoriesCount={profile.repositoriesCount} starsCount={profile.starsCount}
+                         followersCount={profile.followersCount} followingCount={profile.followingCount} />
           </Grid>
-        </div>
-      </div>
+          <Grid item>
+            <About description={profile.description} />
+          </Grid>
+          <Grid item>
+            <Organizations orgImageUrls={profile.orgImageUrls} />
+          </Grid>
+          <Grid item>
+            <Repositories repositoriesInfo={profile.repositoriesInfo} focused={0} />
+          </Grid>
+        </Grid>
+      </ScrollArea>
     </Container>
   );
 }
