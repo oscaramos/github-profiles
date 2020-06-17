@@ -8,7 +8,11 @@ const useStyles = makeStyles(theme => ({
     marginTop: '0.4em'
   },
   organizationImage: {
-    width: '3em'
+    width: '3em',
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)'
+    }
   }
 }))
 
@@ -21,7 +25,7 @@ function Organizations({ organizations }) {
       <Grid container direction='row' spacing={1} className={classes.organizationUrls}>
         {
           organizations.map(org =>
-            <Grid item key={org.avatarUrl}>
+            <Grid item key={org.avatarUrl} component='a' href={org.url}>
               <img className={classes.organizationImage} alt='organization' src={org.avatarUrl} />
             </Grid>
           )

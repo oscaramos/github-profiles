@@ -24,7 +24,11 @@ const useStyles = makeStyles(theme => ({
     color: '#23292D'
   },
   infoIcon: {
-    marginBottom: '0.3em'
+    marginBottom: '0.3em',
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)'
+    }
   },
   infoContainer: {
     textAlign: 'center',

@@ -11,7 +11,10 @@ const getUserOrganizations = (username) =>
   fetch(`https://api.github.com/users/${username}/orgs`)
     .then(resp => resp.json())
     .then(orgs => orgs.map(
-      org => ({ avatarUrl: org.avatar_url })
+      org => ({
+        avatarUrl: org.avatar_url,
+        url: org.url
+      })
     ))
 
 const getUserRepositories = (username) =>
@@ -19,7 +22,9 @@ const getUserRepositories = (username) =>
     .then(resp => resp.json())
     .then(repos => repos.map(
       repo => ({ name: repo.name,
-                 description: repo.description })
+                 description: repo.description,
+                 url: repo.html_url
+      })
     ))
 
 export const getGithubProfile = (username) => {

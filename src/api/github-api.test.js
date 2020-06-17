@@ -18,13 +18,15 @@ it('Getting only relevant data', () => {
 
     expect(profile.organizations).toEqual([
       {
-        avatarUrl: 'https://avatars1.githubusercontent.com/u/35373879?v=4'
+        avatarUrl: 'https://avatars1.githubusercontent.com/u/35373879?v=4',
+        url: 'https://api.github.com/orgs/zero-to-mastery'
       }
     ]);
     expect(profile.repositories[0]).toEqual(
       {
         name: 'Analisis_Numerico',
-        description: 'Programa final del curso de analisis numerico.'
+        description: 'Programa final del curso de analisis numerico.',
+        url: 'https://github.com/oscaramos/Analisis_Numerico'
       }
     );
   });
