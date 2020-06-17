@@ -78,7 +78,9 @@ function App() {
       {
         route === 'input-username'?
           <InputUsername setUsername={setUsername}
-                         handleSearch={handleSearch} />
+                         handleSearch={handleSearch}
+                         error={open}
+          />
         :
           <Profile open={open} profile={profile} />
       }

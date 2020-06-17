@@ -28,13 +28,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const InputUsername = ({ setUsername, handleSearch }) => {
+const InputUsername = ({ error, setUsername, handleSearch }) => {
   const classes = useStyles();
 
   return (
     <Grid container direction='column' align='center' className={classes.usernameContainer}>
       <Grid item>
-        <CssTextField label='Username' onChange={e => {setUsername(e.target.value)}}/>
+        <CssTextField error={error} label='Username' onChange={e => {setUsername(e.target.value)}}/>
       </Grid>
       <Grid item>
         <Button className={classes.submit} onClick={handleSearch}>
