@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { makeStyles } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
 
 import Profile from './pages/Profile'
@@ -48,9 +49,32 @@ const defaultProfile = {
   ],
 }
 
+// From: https://w3bits.com/prevent-chrome-pull-to-refresh-css/
+const useStyles = makeStyles(theme => ({
+  '@global': {
+    body: {
+      /* Break the flow */
+      position: 'absolute',
+      top: '0px',
+
+      /* Give them all the available space */
+      width: '100%',
+      height: '100%',
+
+      /* Remove the margins if any */
+      margin: '0',
+
+      /* Allow them to scroll down the document */
+      overflowY: 'hidden'
+    }
+  }
+}))
+
 // Remember 50 api calls per hour
 
 function App() {
+  const classes = useStyles();
+
   const [route, setRoute] = useState('input-username');
   const [username, setUsername] = useState('');
   const [open, setOpen] = useState(false);
