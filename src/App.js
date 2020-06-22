@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
 
 
 function App() {
-  const [route, setRoute] = useState('input-usernames');
+  const [route, setRoute] = useState('input-username');
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'))
   const [username, setUsername] = useState('');

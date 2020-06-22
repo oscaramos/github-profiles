@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   viewport: {
     width: '100%',
+    height: '40em',
     overflow: 'hidden',
     cursor: 'grabbing',
   }
