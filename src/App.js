@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Profile from './pages/Profile'
 import InputUsername from './pages/InputUsername'
@@ -70,12 +72,11 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-// Remember 50 api calls per hour
 
 function App() {
-  const classes = useStyles();
-
-  const [route, setRoute] = useState('input-username');
+  const [route, setRoute] = useState('input-usernames');
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'))
   const [username, setUsername] = useState('');
   const [open, setOpen] = useState(false);
 
@@ -98,7 +99,7 @@ function App() {
   }
 
   return (
-    <Container maxWidth='xs'>
+    <Container maxWidth={matchesSM? 'xs': 'sm'}>
       {
         route === 'input-username'?
           <InputUsername setUsername={setUsername}

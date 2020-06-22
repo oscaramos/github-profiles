@@ -28,13 +28,11 @@ const useStyles = makeStyles(theme => ({
   },
   viewport: {
     width: '100%',
-    height: '20em',
     overflow: 'hidden',
     cursor: 'grabbing',
   }
 }))
 
-// Remember 50 api calls per hour
 
 const ScrollArea = ({ viewportClass, children }) =>
   <div className={viewportClass} id='viewport'>
